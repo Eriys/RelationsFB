@@ -7,12 +7,13 @@ from localuseragent import ua
 import csv
 
 def settings():
+    """ Configuraion and settings """
     parser = argparse.ArgumentParser()
     parser.add_argument("-i", "--id", help="Facebook UserID Account", required=True)
     args = parser.parse_args()
     userid = args.id
 
-    typeoflinks = int(input("1 for friends, 2 for followers, 3 for followings, 4 for hometown, 5 for current city, 6 for recent friendship, 7 for friend of high school")) -1
+    typeoflinks = int(input("1 for friends, 2 for followers, 3 for followings, 4 for hometown, 5 for current city, 6 for recent friendship, 7 for friend of high school\n==>")) -1
 
     app_collection = ["2","32","33", "125", "124", '1', "54"]
     b64req = "app_collection:"+str(userid)+":2356318349:"+str(app_collection[typeoflinks])
@@ -23,6 +24,7 @@ def settings():
 
 
 def extractfriends(data, friends, cursor):
+    """ Extract Friends from each new pages. """
     cursorplace = len(data['data']['node']['pageItems']['edges'])
     if cursorplace != 0:
         newcursor = data['data']['node']['pageItems']['edges'][cursorplace-1]['cursor']
@@ -50,7 +52,7 @@ def extractfriends(data, friends, cursor):
 
 
 def all_list(cursor, encodedStr, headers, friends):
-
+    """ Callback the same function with the new cursor."""
     while cursor != "end":
 
         payload = {
@@ -71,6 +73,7 @@ def all_list(cursor, encodedStr, headers, friends):
     return(friends)
 
 def show_friends(friends, userid):
+    """ Read in the csv files and show the informations found. """
     with open(f"{userid}.csv", 'w') as f:
         writer= csv.writer(f)
         writer.writerow(['name', 'userid', 'url_profile', 'picture_profile', 'informations'])
