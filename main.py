@@ -104,7 +104,7 @@ def main():
 
     response = requests.post('https://www.facebook.com/api/graphql/',headers=headers, data=data)
     data = response.json()
-    if "Rate limit" in data["errors"][0]["message"]:
+    if "errors" in data.keys():
         print("Rate Limit")
         exit()
     if len(data['data']['node']['pageItems']['edges']) == 0:
