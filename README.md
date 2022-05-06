@@ -1,6 +1,6 @@
 # RelationsFB
 
-RelationsFB is a Python script who download the relations of a profile Facebook if these owner of these profile allow the outside listing. 
+RelationsFB is an OSINT Python script who download the relations of a profile Facebook if these owner of these profile allow the outside listing. 
 You can choose the kind of relations you want to download between the following choices : 
 * All the friends
 * Friends who are in the same highschool
