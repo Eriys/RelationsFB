@@ -6,7 +6,7 @@ You can choose the kind of relations you want to download between the following 
 * Friends who are in the same highschool
 * New Friends
 * Friends who live in the same city
-* Friens who lived in the same city as the owner
+* Friends who lived in the same city as the owner
 * Followers
 * Followings
 
