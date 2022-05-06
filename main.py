@@ -104,6 +104,9 @@ def main():
 
     response = requests.post('https://www.facebook.com/api/graphql/',headers=headers, data=data)
     data = response.json()
+    if "Rate limit" in data["errors"][0]["message"]:
+        print("Rate Limit")
+        exit()
     if len(data['data']['node']['pageItems']['edges']) == 0:
         print("These profile doesn't exist or doesn't have public friends list profile")
         exit()
